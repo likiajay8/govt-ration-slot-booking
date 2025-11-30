@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>{% block title %}Ration Slot{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-left">
+      <img src="{{ url_for('static', filename='images/gok.png') }}" alt="GOK" class="logo-left">
+      <a class="nav-home" href="{{ url_for('index') }}">HOME</a>
+    </div>
+
+    <div class="header-center">
+      <div class="gov-title">GOVERNMENT OF KARNATAKA</div>
+      <div class="dept-sub">Department of Food, Civil Supplies &amp; Consumer Affairs</div>
+    </div>
+
+    <div class="header-right">
+      <a class="nav-logout" href="{{ url_for('user_logout') }}">LOGOUT</a>
+      <img src="{{ url_for('static', filename='images/food.png') }}" alt="Food Dept" class="logo-right">
+    </div>
+  </header>
+
+  <main class="main-wrap">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        <div class="flash-area">
+          {% for category, msg in messages %}
+            <div class="flash {{ category }}">{{ msg }}</div>
+          {% endfor %}
+        </div>
+      {% endif %}
+    {% endwith %}
+
+    <div class="page-inner">
+      {% block content %}{% endblock %}
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    © {{ current_year }} Government of Karnataka — Prototype
+  </footer>
+</body>
+</html>

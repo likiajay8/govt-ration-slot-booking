@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}User Login{% endblock %}
+{% block content %}
+  <div class="card hero-card">
+    <h2 class="form-title">USER LOGIN</h2>
+
+    <form method="post" class="auth-form">
+      <label>Ration Card Number</label>
+      <input name="ration_card" placeholder="1002003001" required>
+
+      <label>OTP</label>
+      <input name="otp" placeholder="Last 4 digits" required>
+
+      <button class="btn btn-primary large" type="submit">LOGIN</button>
+    </form>
+
+    <div class="reference">
+      <h4>Reference:</h4>
+      <p>Ration Card No.: 1002003001 &nbsp; OTP: 3001</p>
+      <p>Ration Card No.: 1002003002 &nbsp; OTP: 3002</p>
+      <p>Ration Card No.: 1002003003 &nbsp; OTP: 3003</p>
+      <p>Ration Card No.: 1002003004 &nbsp; OTP: 3004</p>
+      <p>Ration Card No.: 1002003005 &nbsp; OTP: 3005</p>
+    </div>
+  </div>
+{% endblock %}

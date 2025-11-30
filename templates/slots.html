@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% block content %}
+  <h2>Available slots for {{ selected_date }}</h2>
+
+  <form method="get" action="{{ url_for('slots_page') }}">
+    <label>Choose date: <input type="date" name="date" value="{{ selected_date }}"></label>
+    <button type="submit">Go</button>
+  </form>
+
+  <ul>
+    {% for s in slots %}
+      <li>
+        {{ s.start_time.strftime("%H:%M") }} -
+        {% if s.booked %}
+          <strong>Booked</strong>
+        {% else %}
+          <form method="post" action="{{ url_for('book', slot_id=s.id) }}" style="display:inline">
+            <button type="submit">Book (5 mins)</button>
+          </form>
+        {% endif %}
+      </li>
+    {% else %}
+      <li>No slots for this date.</li>
+    {% endfor %}
+  </ul>
+
+  <p><a href="{{ url_for('user_panel') }}">Back to user panel</a></p>
+{% endblock %}

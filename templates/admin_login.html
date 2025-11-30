@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}Admin Login{% endblock %}
+{% block content %}
+  <div class="card hero-card">
+    <h2 class="form-title">ADMIN LOGIN</h2>
+
+    <form method="post" class="auth-form">
+      <label>Admin number</label>
+      <input name="phone" placeholder="9999999999" required>
+
+      <label>Password</label>
+      <input type="password" name="password" placeholder="Password" required>
+
+      <button class="btn btn-primary large" type="submit">LOGIN</button>
+    </form>
+
+    <div class="reference">
+      <h4>Reference:</h4>
+      <p>Admin number: 9999999999</p>
+      <p>Password: Admin@123</p>
+    </div>
+  </div>
+{% endblock %}

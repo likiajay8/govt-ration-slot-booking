@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+{% block title %}Home - Ration Slot Booking{% endblock %}
+
+{% block hero %}
+  <div class="hero-title">GOVERNMENT OF KARNATAKA</div>
+  <div class="hero-sub">Department of Food, Civil Supplies & Consumer Affairs</div>
+{% endblock %}
+
+{% block content %}
+  <div class="card hero-card center-content">
+    <p>Ration Slot Booking Portal — Book a 5-minute slot and avoid queues.</p>
+
+    <div class="buttons" style="margin-top:18px;">
+      <a href="{{ url_for('admin_login') }}" class="btn">Admin Login</a>
+
+      <a href="{{ url_for('user_login') }}"
+         class="btn btn-secondary"
+         style="background:#fff; color:var(--blue);
+                border:1px solid rgba(10,25,47,0.06);">
+        User Login
+      </a>
+    </div>
+  </div>
+{% endblock %}

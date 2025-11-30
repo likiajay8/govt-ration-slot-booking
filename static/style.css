@@ -1,0 +1,235 @@
+/* ---------- base layout (updated) ---------- */
+:root {
+  --bg: #dff3ff;
+  --card: #ffffff;
+  --accent: #1f5676;
+  --muted: #a3c7d6;
+  --slot-bg: #f0f8ff;
+  --slot-booked: #ddd;
+}
+
+/* page background + base font */
+body {
+  margin: 0;
+  font-family: "Segoe UI", Roboto, Arial, sans-serif;
+  background: linear-gradient(180deg, #e6f6ff 0%, #d9efff 100%);
+  color: #133b52;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+
+/* ---------------- HEADER ----------------
+   Header is no longer sticky/fixed so it won't follow the page while scrolling.
+   The center title is absolutely centered inside the header container so it
+   visually sits between the two logos without overlapping the rest.
+*/
+.site-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 40px;
+  position: relative;           /* important: not fixed/sticky */
+  background: transparent;
+  z-index: 10;
+  min-height: 96px;
+  box-sizing: border-box;
+}
+
+/* left side (logo + HOME) */
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 12;
+}
+.logo-left {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(20,40,60,0.12);
+  object-fit: cover;
+}
+.nav-home {
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 18px;
+  margin-left: 6px;
+}
+
+/* right side (LOGOUT + logo) */
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  z-index: 12;
+}
+.logo-right {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  box-shadow: 0 6px 14px rgba(20,40,60,0.12);
+  object-fit: cover;
+}
+.nav-logout {
+  font-weight: 700;
+  color: var(--accent);
+  text-decoration: none;
+  font-size: 18px;
+  margin-right: 6px;
+}
+
+/* center area: absolute centering so the title remains visually centered
+   between logos without needing sticky/fixed positioning
+   pointer-events:none ensures clicks hit underlying elements (HOME / LOGOUT)
+*/
+.header-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  pointer-events: none;
+  z-index: 11;
+  width: calc(100% - 240px); /* leave room for logos so center text wraps nicely */
+  box-sizing: border-box;
+  padding-top: 4px;
+}
+.gov-title {
+  font-size: 28px;
+  font-weight: 800;
+  color: #214d63;
+  margin: 0;
+  line-height: 1;
+}
+.dept-sub {
+  font-size: 14px;
+  color: #3a6b82;
+  margin-top: 6px;
+  opacity: 0.95;
+}
+
+/* ---------------- MAIN / PAGE ---------------- */
+.main-wrap {
+  padding: 28px 24px 80px;
+  min-height: calc(100vh - 140px);
+  box-sizing: border-box;
+}
+.page-inner {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding-top: 10px;
+}
+
+/* ---------- white card centered ---------- */
+.card {
+  background: var(--card);
+  border-radius: 14px;
+  box-shadow: 0 10px 30px rgba(18,44,66,0.06);
+  padding: 28px;
+  margin: 40px auto;           /* center horizontally and add vertical spacing */
+  max-width: 1100px;          /* constrain width like your screenshots */
+  box-sizing: border-box;
+}
+/* card */
+.card.center-content {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+.large-card { padding: 34px; }
+
+/* panel titles */
+.panel-title { font-size: 28px; color: #123e55; margin: 0 0 8px; font-weight: 800; }
+
+/* ---------- forms & controls ---------- */
+.date-form { display:flex; gap:18px; align-items:center; margin-top:12px; margin-bottom:18px; flex-wrap:wrap; }
+.date-select { padding:14px 16px; border-radius:10px; border:1px solid #dbeaf2; min-width:320px; font-size:16px; background:white; }
+.btn, .btn-primary { background:var(--accent); color:#fff; border:none; padding:12px 22px; border-radius:10px; font-weight:700; cursor:pointer; box-shadow: 0 6px 8px rgba(19,67,100,0.12); }
+.btn:active { transform: translateY(1px); }
+.btn-disabled { background:#e9ecef; color:#6b6b6b; border:none; padding:10px 18px; border-radius:8px; }
+
+/* Danger button */
+.btn-danger {
+  background:#c43b3b;
+  color:#fff;
+  border:none;
+  padding:10px 16px;
+  border-radius:10px;
+  font-weight:700;
+  cursor:pointer;
+  box-shadow: 0 6px 10px rgba(196,59,59,0.12);
+}
+.btn-danger-small {
+  background:#c43b3b;
+  color:#fff;
+  border:none;
+  padding:6px 10px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+}
+
+/* active-dates pill */
+.active-dates { display:flex; flex-wrap:wrap; gap:10px; margin-top:8px; }
+.date-pill { background:#f7fbff; padding:8px 12px; border-radius:10px; display:flex; align-items:center; gap:8px; box-shadow: 0 6px 12px rgba(20,40,60,0.04); }
+.date-text { font-weight:700; color:#184a63; }
+
+/* ---------- slots grid ---------- */
+.slots-grid {
+  display:grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap:18px;
+  margin-top:18px;
+}
+.slot-card {
+  background: linear-gradient(180deg,#f9fdff,#f0f8ff);
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+  box-shadow: 0 6px 18px rgba(20,40,60,0.04);
+}
+.slot-time { font-weight:800; margin-bottom:10px; color:#174a63; font-size:18px; }
+.your-booking { background:#244; color:#fff; }
+
+/* booked state */
+.slot-booked { background:#f3f3f3; }
+.slot-booked .btn-disabled { background:#d3d3d3; color:#666; }
+
+/* notice & info */
+.info-row.notice { background:#fff8e6; padding:12px; border-radius:10px; margin:14px 0; color:#5a4a00; }
+
+/* confirmation card layout */
+.confirmation-card { padding:26px; }
+.confirm-row { display:flex; gap:20px; align-items:center; flex-wrap:wrap; }
+.confirm-item { min-width:160px; }
+.confirm-label { font-size:14px; color:#2b4d62; }
+.confirm-value { font-weight:700; color:#0f3b51; }
+
+/* center login card on index page - ensure centered */
+.center-wrap { display:flex; justify-content:center; align-items:center; padding:24px 0; }
+
+/* footer */
+.site-footer { text-align:center; padding:22px 0; color:#2b4d62; opacity:0.95; margin-top:34px; }
+
+/* ---------- small responsive tweaks ---------- */
+@media (max-width: 900px) {
+  .date-select { min-width: 220px; }
+  .header-center { width: calc(100% - 120px); left:50%; transform:translateX(-50%); }
+  .gov-title { font-size: 22px; }
+  .dept-sub { font-size: 12px; }
+  .slots-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); }
+  .logo-left, .logo-right { width:56px; height:56px; }
+}
+
+@media (max-width: 600px) {
+  .site-header { padding: 12px 16px; }
+  .header-left, .header-right { gap:10px; }
+  .header-center { position: static; transform:none; padding-top:8px; pointer-events:auto; text-align:center; }
+  .gov-title { font-size: 20px; }
+  .page-inner { padding: 0 12px; }
+  .card { width: calc(100% - 24px); margin: 20px auto; padding:18px; }
+  .slots-grid { grid-template-columns: repeat(2, 1fr); gap:12px; }
+}

@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Booking Confirmed{% endblock %}
+
+{% block content %}
+<div class="card confirmation-card">
+  <h2 class="panel-title">Booking Confirmed</h2>
+
+  <div class="confirm-row">
+    <div class="confirm-item">
+      <div class="confirm-label">Reference:</div>
+      <div class="confirm-value">{{ booking.ref_code }}</div>
+    </div>
+
+    <div class="confirm-item">
+      <div class="confirm-label">Date:</div>
+      <div class="confirm-value">{{ booking.booking_date.strftime('%Y-%m-%d') }}</div>
+    </div>
+
+    <div class="confirm-item">
+      <div class="confirm-label">Time:</div>
+      <div class="confirm-value">{{ booking.slot.start_time.strftime('%H:%M') }}</div>
+    </div>
+
+    <div class="confirm-item">
+      <div class="confirm-label">Status:</div>
+      <div class="confirm-value">Show this reference at the ration shop.</div>
+    </div>
+
+    <div class="confirm-link">
+      <a href="{{ url_for('user_panel') }}">Back to panel</a>
+    </div>
+  </div>
+</div>
+{% endblock %}
