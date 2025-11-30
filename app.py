@@ -4,12 +4,6 @@ from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.exc import IntegrityError
 from datetime import datetime, date, time, timedelta
 import os
-
-if __name__ == '__main__':
-    port = int(os.environ.get("PORT", 5000))
-    # allow external access
-    app.run(host='0.0.0.0', port=port, debug=True)
-
 import secrets
 
 # -------------------------
